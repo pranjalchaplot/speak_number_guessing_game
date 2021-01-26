@@ -31,7 +31,30 @@ function checkNumber(msg){
     const num = +msg;
     // Check if valid number
     if(Number.isNaN(num)){
-        msgEl.innerHTML = `<div>That is not a number</div>`;
+        msgEl.innerHTML = `<div>That is not a valid number</div>`;
+        return;
+    }
+
+    //Check in Range
+    if(num > 100 || num < 1){
+        msgEl.innerHTML +=  `<div>Number must be between 1 and 100</div>`
+    }
+
+    // Check number
+    if(num===randomNum){
+        document.body.innerHTML = `
+        <h2>Congrats! You Have Guessed The Number. <br> <br>
+        It was ${num}.</h2>
+        <button class = "play-again" id = "play-again"> Play Again</button>
+        `;
+        return;
+    } else if(num < randomNum) {
+        msgEl.innerHTML += `<div>Go Higher</div>`;
+        return;
+    }
+    else{
+        msgEl.innerHTML += `<div>Go Lower</div>`;
+        return; 
     }
 }
 
