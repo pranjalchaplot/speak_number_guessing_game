@@ -31,7 +31,7 @@ function checkNumber(msg){
     const num = +msg;
     // Check if valid number
     if(Number.isNaN(num)){
-        msgEl.innerHTML = `<div>That is not a valid number</div>`;
+        msgEl.innerHTML += `<div>That is not a valid number</div>`;
         return;
     }
 
@@ -50,11 +50,9 @@ function checkNumber(msg){
         return;
     } else if(num < randomNum) {
         msgEl.innerHTML += `<div>Go Higher</div>`;
-        return;
     }
     else{
-        msgEl.innerHTML += `<div>Go Lower</div>`;
-        return; 
+        msgEl.innerHTML += `<div>Go Lower</div>`; 
     }
 }
 
@@ -65,3 +63,12 @@ function getRandomNumber() {
 
 // Speak Result
 recognition.addEventListener('result', onSpeak);
+
+// End Speech Recongnition
+recognition.addEventListener('end', () => recognition.start());
+
+document.body.addEventListener('click', e => {
+    if(e.target.id === 'play-again') {
+        window.location.reload();
+    }
+});
