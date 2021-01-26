@@ -21,7 +21,7 @@ function onSpeak(e) {
 // Write User Speech
 function writeMessage(msg){
     msgEl.innerHTML = `
-    <div> You Said: </div>
+    <div class="msg"> You Said: </div>
     <span class = "box">${msg}</span>
     `;
 }
@@ -31,28 +31,28 @@ function checkNumber(msg){
     const num = +msg;
     // Check if valid number
     if(Number.isNaN(num)){
-        msgEl.innerHTML += `<div>That is not a valid number</div>`;
+        msgEl.innerHTML += `<div class="msg">That is not a valid number</div>`;
         return;
     }
 
     //Check in Range
     if(num > 100 || num < 1){
-        msgEl.innerHTML +=  `<div>Number must be between 1 and 100</div>`
+        msgEl.innerHTML +=  `<div class="msg">Number must be between 1 and 100</div>`
     }
 
     // Check number
     if(num===randomNum){
-        document.body.innerHTML = `
-        <h2>Congrats! You Have Guessed The Number. <br> <br>
+        document.getElementById("container").innerHTML = `
+        <h2 class="msg">Congrats! You Have Guessed The Number. <br> <br>
         It was ${num}.</h2>
         <button class = "play-again" id = "play-again"> Play Again</button>
         `;
         return;
     } else if(num < randomNum) {
-        msgEl.innerHTML += `<div>Go Higher</div>`;
+        msgEl.innerHTML += `<div class="msg">Go Higher</div>`;
     }
     else{
-        msgEl.innerHTML += `<div>Go Lower</div>`; 
+        msgEl.innerHTML += `<div class="msg">Go Lower</div>`; 
     }
 }
 
